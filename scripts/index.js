@@ -16,19 +16,26 @@ function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
   // iterate through the items array
+  if (responseJson.data.length === 0) {
+    $('#results-list').append(
+      `<p class="no-result">Sorry, no results.</p>`
+    )
+  } 
   for (let i = 0; i < responseJson.data.length; i++){
     // for each video object in the items 
     //array, add a list item to the results 
     //list with the video title, description,
     //and thumbnail
+
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName}</h3>
       <p>${responseJson.data[i].description}</p>
       <a href='${responseJson.data[i].url}'>More Park Information</a>
       </li>`
-    )};
+    );
+  }
   //display the results section  
-  $('#results').removeClass('hidden');
+  //$('#results').removeClass('hidden');
 };
 
 function getParks(query, maxResults=10, stateCode) {
