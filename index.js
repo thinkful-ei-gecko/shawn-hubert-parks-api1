@@ -42,7 +42,7 @@ function getParks(query, maxResults=10, stateCode) {
   const params = {
     api_key: apiKey,
     q: query,
-    maxResults,
+    limit: maxResults,
     stateCode
   };
   const queryString = formatQueryParams(params)
